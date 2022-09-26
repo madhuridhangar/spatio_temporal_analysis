@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="css/style1.css">
+
+    <!-- Font Awesome JS -->
+    <script src='https://cdn.plot.ly/plotly-2.14.0.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="./js/trendanalysis.js"></script>
+    <title>Trend Analysis of NO2 with daily data.</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar" style="height:100%;  overflow-y: scroll;
+    top: 0;
+    bottom: 0;">
+            <div class="sidebar-header">
+                <h3>Using NO2 daily data</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+
+                <li class="active">
+                    <a href="#Dublin">Dublin </a>
+                </li>
+                <li>
+                    <a href="#London">London </a>
+                </li>
+                <li>
+                    <a href="#Amsterdam">Amsterdam </a>
+                </li>
+                <li>
+                    <a href="#Paris">Paris </a>
+                </li>
+                <li>
+                    <a href="#Milan">Milan </a>
+                </li>
+
+                <li>
+                    <a href="#Ruhr">Ruhr </a>
+                </li>
+
+                <li>
+                    <a href="#Birmingham">Birmingham </a>
+                </li>
+                <li>
+                    <a href="#Barcelona">Barcelona </a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+
+                <li>
+                    <a href="./index.html" class="article">Back to home</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content" style="background-color: rgb(188, 206, 251); position: relative;">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid navbar-right">
+                    <h5>Trend Analysis of NO2 over Europian cities during Pre and Post Covid period.</h5>
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                </div>
+
+
+
+
+            </nav>
+
+            <div class="row" style="background-color:white; margin: 5px;">
+                <!-- begin col-8 -->
+                <div class="col-md-12">
+                    <!-- begin panel -->
+                    <div class="panel panel-inverse">
+                        <div class="panel-body pr-1">
+                            <div class="row col-md-12">
+                                <div class="col-md-4">
+                                    <img src="legends.png" style="height:100%; width:100%" />
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="days5.jpg" style="height:84%; width:100%; padding-top:4%" />
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="paris6.jpg" style="height:80%; width:100%; padding-top:4%" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row" style="width:100% ; padding: 0%;" class="table-responsive">
+                <!-- begin col-8 -->
+                <div class="col-md-12" style="width:100%" class="table-responsive">
+                    <!-- begin panel -->
+                    <div class="panel " style="width:100%" class="table-responsive">
+                        <div class="panel-body " style="width:100%" class="table-responsive">
+
+                            <div id="Dublin" style="width:100%" class="table-responsive">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            <div class="row" style="width:100% ; padding: 0%;" class="table-responsive">
+                <!-- begin col-8 -->
+                <div class="col-md-12" style="width:100%" class="table-responsive">
+                    <!-- begin panel -->
+                    <div class="panel " style="width:100%" class="table-responsive">
+                        <div class="panel-body " style="width:100%" class="table-responsive">
+
+                            <div id="Amsterdam" style="width:100%" class="table-responsive">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br />
+            <div class="row" style="width:100% ; padding: 0%;" class="table-responsive">
+                <!-- begin col-8 -->
+                <div class="col-md-12" style="width:100%" class="table-responsive">
+                    <!-- begin panel -->
+                    <div class="panel " style="width:100%" class="table-responsive">
+                        <div class="panel-body " style="width:100%" class="table-responsive">
+
+                            <div id="Birmingham" style="width:100%" class="table-responsive">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- begin col-8 -->
+            <br />
+            <div class="row" style="width:100% ; padding: 0%;" class="table-responsive">
+                <!-- begin col-8 -->
+                <div class="col-md-12" style="width:100%" class="table-responsive">
+                    <!-- begin panel -->
+                    <div class="panel " style="width:100%" class="table-responsive">
+                        <div class="panel-body " style="width:100%" class="table-responsive">
+
+                            <div id="London" style="width:100%" class="table-responsive">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br />
+            <div class="row" style="width:100% ; padding: 0%;" class="table-responsive">
+                <!-- begin col-8 -->
+                <div class="col-md-12" style="width:100%" class="table-responsive">
+                    <!-- begin panel -->
+                    <div class="panel " style="width:100%" class="table-responsive">
+                        <div class="panel-body " style="width:100%" class="table-responsive">
+
+                            <div id="Barcelona" style="width:100%" class="table-responsive">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br />
+            <div class="row" style="width:100% ; padding: 0%;" class="table-responsive">
+                <!-- begin col-8 -->
+                <div class="col-md-12" style="width:100%" class="table-responsive">
+                    <!-- begin panel -->
+                    <div class="panel " style="width:100%" class="table-responsive">
+                        <div class="panel-body " style="width:100%" class="table-responsive">
+
+                            <div id="Ruhr" style="width:100%" class="table-responsive">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br />
+            <div class="row" style="width:100% ; padding: 0%;" class="table-responsive">
+                <!-- begin col-8 -->
+                <div class="col-md-12" style="width:100%" class="table-responsive">
+                    <!-- begin panel -->
+                    <div class="panel " style="width:100%" class="table-responsive">
+                        <div class="panel-body " style="width:100%" class="table-responsive">
+
+                            <div id="Paris" style="width:100%" class="table-responsive">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+
+            <br />
+            <div class="row" style="width:100% ; padding: 0%;" class="table-responsive">
+                <!-- begin col-8 -->
+                <div class="col-md-12" style="width:100%" class="table-responsive">
+                    <!-- begin panel -->
+                    <div class="panel " style="width:100%" class="table-responsive">
+                        <div class="panel-body " style="width:100%" class="table-responsive">
+
+                            <div id="Milan" style="width:100%" class="table-responsive">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
