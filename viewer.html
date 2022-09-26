@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Tutorial</title>
+
+    <!-- leaflet css  -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src='https://cdn.plot.ly/plotly-2.8.3.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+    <style>
+
+      body,html {
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        display: table;
+        font-family: Helvetica;
+        color: white;
+        font-weight: bold;
+        }
+        body {
+        background: #092756;
+        background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40%), -moz-linear-gradient(top, rgba(57, 173, 219, 0.25) 0%, rgba(42, 60, 87, 0.4) 100%), -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40%), -webkit-linear-gradient(top, rgba(57, 173, 219, 0.25) 0%, rgba(42, 60, 87, 0.4) 100%), -webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40%), -o-linear-gradient(top, rgba(57, 173, 219, 0.25) 0%, rgba(42, 60, 87, 0.4) 100%), -o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40%), -ms-linear-gradient(top, rgba(57, 173, 219, 0.25) 0%, rgba(42, 60, 87, 0.4) 100%), -ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, 0.25) 0%, rgba(42, 60, 87, 0.4) 100%), linear-gradient(135deg, #670d10 0%, #092756 100%);
+        }
+
+
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .coordinate {
+            position: absolute;
+            bottom: 10px;
+            right: 50%;
+        }
+
+        .leaflet-popup-content-wrapper {
+            background-color: #000000;
+            color: #fff;
+            border: 1px solid red;
+            border-radius: 0px;
+        }
+        h3{
+            color:#000000;
+        }
+    </style>
+</head>
+
+<body>
+    <h3> NO2 values Around European Continent as unit mol / meter^2</h3>
+    <div class="wrap">
+        <br>
+
+        <div class="RadioBtnsWrap">
+
+      <input type="radio" name="radio1" checked id="radio1" class="Radio" value = "201804"/>
+      <label for="radio11">2018-04</label>
+
+      <input type="radio" name="radio1" id="radio2" class="Radio" value = "201808" />
+      <label  for="radio12">2018-08</label>
+
+      <input type="radio" name="radio1" id="radio3" class="Radio" value = "201812" />
+      <label  for="radio13">2018-12</label>
+
+      <input type="radio" name="radio1" id="radio4" class="Radio" value = "201904" />
+      <label  for="radio14">2019-04</label>
+
+      <input type="radio" name="radio1" checked id="radio5" class="Radio" value = "201908"/>
+      <label for="radio11">2019-08</label>
+
+      <input type="radio" name="radio1" id="radio6" class="Radio" value = "201912" />
+      <label  for="radio12">2019-12</label>
+
+      <input type="radio" name="radio1" id="radio7" class="Radio" value = "202004"/>
+      <label  for="radio13">2020-04</label>
+
+      <input type="radio" name="radio1" id="radio8" class="Radio" value = "202008"/>
+      <label  for="radio14">2020-08</label>
+
+      <input type="radio" name="radio1" checked id="radio9" class="Radio" value = "202012"/>
+      <label for="radio11">2020-12</label>
+
+        </div>
+    </div>
+    <br>
+
+    <div id="map">
+        <div class="leaflet-control coordinate"></div>
+    </div>
+</body>
+
+</html>
+
+<!-- leaflet js  -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<script>
+    // Map initialization
+    var map = L.map('map').setView([28.3949, 84.1240], 8);
+
+    //osm layer
+    var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+    osm.addTo(map);
+     map.addLayer(osm)
+
+    // water color
+    var watercolor = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
+        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        subdomains: 'abcd',
+        minZoom: 1,
+        maxZoom: 16,
+        ext: 'jpg'
+    });
+    watercolor.addTo(map)
+
+    // dark map
+    var dark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 19
+    });
+    dark.addTo(map)
+
+    // google street
+    googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+        maxZoom: 20,
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+    });
+    googleStreets.addTo(map);
+
+    //google satellite
+    googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+        maxZoom: 20,
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+    });
+    googleSat.addTo(map)
+
+var baseMaps = {
+        "OSM": osm,
+        "Water color map": watercolor,
+        'Dark': dark,
+        'Google Street': googleStreets,
+        "Google Satellite": googleSat,
+    };
+    L.control.layers(baseMaps).addTo(map);
+
+var inf = null;
+var radiodate = $('input[name="radio1"]:checked').val();
+if (inf != null) map.removeLayer(inf);
+
+
+
+
+
+
+</script>
+
